@@ -18,13 +18,13 @@
     src: "{{ item }}"
     dest: /etc/td-agent-bit/custom/conf/
     mode: 0644
-  loop: "{{ fluent_custom_conf_files }}"
-  when: fluent_custom_conf_files is defined
+  loop: "{{ fluentbit_custom_conf_files }}"
+  when: fluentbit_custom_conf_files is defined
 
 - name: Configure | Copy custom parser files
   copy:
     src: "{{ item }}"
     dest: /etc/td-agent-bit/custom/parsers/
     mode: 0644
-  loop: "{{ fluent_custom_parsers_files }}"
-  when: fluent_custom_parsers_files is defined
+  loop: "{{ fluentbit_custom_parsers_files }}"
+  when: fluentbit_custom_parsers_files is defined

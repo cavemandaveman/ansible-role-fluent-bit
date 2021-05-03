@@ -1,10 +1,10 @@
 [SERVICE]
-{% for setting in fluent_conf_service_settings %}
+{% for setting in fluentbit_conf_service_settings %}
     {{  setting.name }} {{ setting.value }}
 {% endfor %}
 
 
-{% for input in fluent_conf_inputs %}
+{% for input in fluentbit_conf_inputs %}
 [INPUT]
 {% for key in input %}
     {{ key }} {{ input[key] }}
@@ -12,7 +12,7 @@
 {% endfor %}
 
 
-{% for output in fluent_conf_outputs %}
+{% for output in fluentbit_conf_outputs %}
 [OUTPUT]
 {% for key in output %}
     {{ key }} {{ output[key] }}
@@ -20,7 +20,7 @@
 {% endfor %}
 
 
-{% for filter in fluent_conf_filters %}
+{% for filter in fluentbit_conf_filters %}
 [FILTER]
 {% for key in filter %}
     {{ key }} {{ filter[key] }}
@@ -28,6 +28,6 @@
 {% endfor %}
 
 
-{% if fluent_custom_conf_files is defined and fluent_custom_conf_files|length %}
+{% if fluentbit_custom_conf_files is defined and fluentbit_custom_conf_files|length %}
 @INCLUDE custom/conf/*
 {% endif %}

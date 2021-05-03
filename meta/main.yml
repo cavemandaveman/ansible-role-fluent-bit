@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: fluent-bit
+  role_name: fluentbit
   author: cavemandaveman
   description: An Ansible Role that installs and configures Fluent Bit on Linux.
   company: cavemandaveman
