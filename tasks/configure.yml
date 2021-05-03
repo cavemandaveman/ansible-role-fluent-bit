@@ -1,0 +1,30 @@
+---
+- name: Configure | Set td-agent-bit conf
+  template:
+    src: td-agent-bit.conf.j2
+    dest: /etc/td-agent-bit/td-agent-bit.conf
+    mode: 0644
+
+- name: Configure | Create custom conf and parser directories
+  file:
+    path: "/etc/td-agent-bit/custom/{{ item }}"
+    state: directory
+  loop:
+    - conf
+    - parsers
+
+- name: Configure | Copy custom conf files
+  copy:
+    src: "{{ item }}"
+    dest: /etc/td-agent-bit/custom/conf/
+    mode: 0644
+  loop: "{{ fluent_custom_conf_files }}"
+  when: fluent_custom_conf_files is defined
+
+- name: Configure | Copy custom parser files
+  copy:
+    src: "{{ item }}"
+    dest: /etc/td-agent-bit/custom/parsers/
+    mode: 0644
+  loop: "{{ fluent_custom_parsers_files }}"
+  when: fluent_custom_parsers_files is defined

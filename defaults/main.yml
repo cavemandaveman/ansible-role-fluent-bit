@@ -1,0 +1,37 @@
+---
+fluent_apt_repo: deb https://packages.fluentbit.io/ubuntu/focal focal main
+
+fluent_conf_service_settings:
+  - name: flush
+    value: 5
+  - name: daemon
+    value: 'Off'
+  - name: log_level
+    value: info
+  - name: parsers_file
+    value: parsers.conf
+  - name: plugins_file
+    value: plugins.conf
+  - name: http_server
+    value: 'Off'
+  - name: http_listen
+    value: 0.0.0.0
+  - name: http_port
+    value: 2020
+  - name: storage.metrics
+    value: 'on'
+
+fluent_conf_inputs:
+  - name: cpu
+    tag: cpu.local
+    interval_sec: 1
+
+fluent_conf_outputs:
+  - name: stdout
+    match: '*'
+
+fluent_conf_filters: []
+
+fluent_custom_conf_files: []
+
+fluent_custom_parsers_files: []

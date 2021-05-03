@@ -1,0 +1,15 @@
+---
+- name: Setup Fluent Bit repo
+  include_tasks: "setup-{{ ansible_os_family }}.yml"
+
+- name: Install Fluent Bit
+  include_tasks: install.yml
+
+- name: Configure Fluent Bit
+  include_tasks: configure.yml
+
+- name: Enable and Start Fluent Bit
+  service:
+    name: td-agent-bit
+    enabled: true
+    state: started
